@@ -11,11 +11,11 @@ use Illuminate\Support\Arr;
 use Zqhong\FastdEloquent\Database\ConnectionFactory;
 
 /**
- * Class EloquentServiceProvider
+ * Class EloquentService
  *
  * @package ServiceProvider
  */
-class EloquentServiceProvider implements ServiceProviderInterface
+class EloquentService implements ServiceProviderInterface
 {
     /**
      * @var Manager

@@ -6,7 +6,7 @@ use FastD\Config\Config;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Schema\Blueprint;
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use Zqhong\FastdEloquent\EloquentServiceProvider;
+use Zqhong\FastdEloquent\EloquentService;
 
 class TestCase extends BaseTestCase
 {
@@ -25,7 +25,7 @@ class TestCase extends BaseTestCase
         ]);
         container()->add('config', $config);
 
-        $provider = new EloquentServiceProvider();
+        $provider = new EloquentService();
         $provider->register(Runtime::$container);
 
         // 创建一张 Post 表用于测试
