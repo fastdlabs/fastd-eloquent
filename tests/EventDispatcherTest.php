@@ -15,7 +15,7 @@ class EventDispatcherTest extends TestCase
     public function testEvent()
     {
         $triggerCnt = 0;
-        $app = Application::$app;
+        $app = container();
 
         /** @var Dispatcher $eventDispatcher */
         $eventDispatcher = $app->get('eloquent_event_dispatcher');

@@ -20,14 +20,14 @@ class EloquentServiceProvider implements ServiceProviderInterface
     /**
      * @var Manager
      */
-    protected $capsule;
+    protected Manager $capsule;
 
     /**
      * 注册 Eloquent 服务
      *
      * @param Container $container
      */
-    public function register(Container $container)
+    public function register(Container $container): void
     {
         $this->capsule = new Manager();
 
@@ -38,7 +38,7 @@ class EloquentServiceProvider implements ServiceProviderInterface
 
         $this->capsule->setAsGlobal();
         $this->capsule->bootEloquent();
-        $container['eloquent_db'] = $this->capsule;
+        $container->add('eloquent_db', $this->capsule);
 
         $this->setPageResolver($container);
         $this->setEvent($container);
@@ -72,7 +72,7 @@ class EloquentServiceProvider implements ServiceProviderInterface
     {
         $eventDispatcher = new Dispatcher();
         $this->capsule->setEventDispatcher($eventDispatcher);
-        $container['eloquent_event_dispatcher'] = $eventDispatcher;
+        $container->add('eloquent_event_dispatcher', $eventDispatcher);
     }
 
     /**

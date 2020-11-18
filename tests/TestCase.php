@@ -12,8 +12,7 @@ class TestCase extends BaseTestCase
 {
     protected function setUp()
     {
-        $app = new Application();
-
+        new Runtime();
         $config = new Config();
         $config->merge([
             'database' => [
@@ -24,10 +23,10 @@ class TestCase extends BaseTestCase
                 ],
             ],
         ]);
-        $app->add('config', $config);
+        container()->add('config', $config);
 
         $provider = new EloquentServiceProvider();
-        $provider->register($app);
+        $provider->register(Runtime::$container);
 
         // 创建一张 Post 表用于测试
         Manager::schema()->dropIfExists('posts');

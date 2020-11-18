@@ -1,24 +1,27 @@
 <?php
 
+use Illuminate\Database\Connection;
+use Illuminate\Events\Dispatcher;
+
 if (!function_exists('eloquent_db')) {
     /**
      * 获取数据库连接实例
      *
      * @param string $name
-     * @return \Illuminate\Database\Connection
+     * @return Connection
      */
-    function eloquent_db($name = 'default')
+    function eloquent_db($name = 'default'): Connection
     {
-        return app()->get('eloquent_db')->getConnection($name);
+        return container()->get('eloquent_db')->getConnection($name);
     }
 }
 
 if (!function_exists('eloquent_event_dispatcher')) {
     /**
-     * @return \Illuminate\Events\Dispatcher
+     * @return Dispatcher
      */
-    function eloquent_event_dispatcher()
+    function eloquent_event_dispatcher(): object
     {
-        return app()->get('eloquent_event_dispatcher');
+        return container()->get('eloquent_event_dispatcher');
     }
 }

@@ -4,9 +4,9 @@ use Zqhong\FastdEloquent\Test\Application;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-if (!function_exists('app')) {
-    function app()
+if (!function_exists('container')) {
+    function container(): \FastD\Container\Container
     {
-        return Application::$app;
+        return \Zqhong\FastdEloquent\Test\Runtime::$container;
     }
 }

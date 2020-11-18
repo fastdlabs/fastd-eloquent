@@ -14,7 +14,7 @@ class EloquentServiceProviderTest extends TestCase
 {
     public function testRegister()
     {
-        $app = Application::$app;
+        $app = Runtime::$container;
 
         /** @var Manager $eloquentDb */
         $eloquentDb = $app->get('eloquent_db');
